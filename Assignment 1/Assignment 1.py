@@ -4,13 +4,13 @@ Due: 5/4/19
 Travel Tracker 1.0
 """
 
+import csv
+
 MENU = """Menu:
 L - List places
 A - Add new place
 M - Mark a place as visited
 Q - Quit"""
-
-import csv
 
 
 def main():
@@ -61,22 +61,23 @@ def list_places(places_list):
             longest_country = len(place[1])
     for place in places_list:
         print(("*" if (place[3] is 'n') else " "), " {}.".format(place_index),
-              place[0], " " * (longest_place - len(place[0])), place[1],
+              place[0], " " * (longest_place - len(place[0])), "in", place[1],
               " " * (longest_country + 1 - len(place[1])), "priority", " " * (3 - len(str(place[2]))), place[2])
         place_index += 1
     print(place_index - 1, " places.")
     if unvisited_place == 0:
-        print("No unvisited places")
+        print("No places left to visit. Why not add a new place?")
     else:
         print("You still want to visit", unvisited_place, "places.")
 
 
 def add_new_place(places_list):
-    place = record_input("Place:")
+    place = record_input("Name:")
     country = record_input("Country:")
     priority = record_input("Priority:")
     new_place = [place, country, priority, 'n']
     places_list.append(new_place)
+    print(place, "in", country, "( priority", priority, ")", "added to Travel Tracker")
 
 
 def record_input(input_type):
@@ -136,7 +137,7 @@ def visited_place(places_list):
     elif places_list[user_input - 1][3] == 'v':
         print('That place is already visited')
     else:
-        print(places_list[user_input - 1][0], " in ", places_list[user_input - 1][1], " visited")
+        print(places_list[user_input - 1][0], " in ", places_list[user_input - 1][1], " visited!")
         places_list[user_input - 1][3] = 'v'
 
 
@@ -148,7 +149,6 @@ def save_places(places_list):
         print(','.join(place), file=output_file)
     output_file.close()
     print(len(places_list), " places saved to places.csv")
-    print("Have a nice day :)")
 
 
 main()
