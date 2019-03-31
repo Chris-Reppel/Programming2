@@ -79,14 +79,42 @@ def add_new_place(places_list):
     places_list.append(new_place)
 
 
-#def record_input():
+def record_input(input_type):
+    if input_type == "Priority:" or input_type == 'place_index':
+        data_type = int
+
+    else:
+        data_type = str
+
+    if input_type == 'place_index':
+        input_type = '>>>'
+
+    user_input = input("{} ".format(input_type))
+    while verify_input(user_input, data_type) == 0:
+        user_input = input("{} ".format(input_type))
+    if data_type == int:
+        user_input = int(user_input)
+    return user_input
 
 
-
-
-#def verify_input():
-
-
+def verify_input(user_input, data_type):
+    if data_type == str:
+        if not user_input.strip():
+            print("Input can not be blank")
+            return False
+        else:
+            return True
+    else:
+        try:
+            user_input = int(user_input)
+            if user_input <= 0:
+                print("Number must be > 0")
+                return False
+            else:
+                return True
+        except ValueError:
+            print("Invalid input; enter a valid number")
+            return False
 
 
 #def check_unvisited():
