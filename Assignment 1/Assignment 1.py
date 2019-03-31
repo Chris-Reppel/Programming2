@@ -71,9 +71,12 @@ def list_places(places_list):
         print("You still want to visit", unvisited_place, "places.")
 
 
-#def add_new_place():
-
-
+def add_new_place(places_list):
+    place = record_input("Place:")
+    country = record_input("Country:")
+    priority = record_input("Priority:")
+    new_place = [place, country, priority, 'n']
+    places_list.append(new_place)
 
 
 #def record_input():
