@@ -25,7 +25,7 @@ def main():
         elif choice == "M":
             list_places(places_list)
             print("Enter the number of a place to mark as visited")
-            check_unvisited_place(places_list)
+            check_unvisited(places_list)
         else:
             print("Invalid menu choice")
         print(MENU)
