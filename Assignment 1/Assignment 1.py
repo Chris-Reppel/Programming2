@@ -122,15 +122,22 @@ def check_unvisited(places_list):
     for place in places_list:
         if place[3] == 'n':
             unvisited += 1
-            visisted_place(places_list)
+            visited_place(places_list)
             break
     if unvisited == 0:
         print("No unvisited places")
 
 
-#def visited_place():
-
-
+def visited_place(places_list):
+    user_input = record_input('place_index')
+    if user_input > len(places_list):
+        print('Invalid place number')
+        visited_place(places_list)
+    elif places_list[user_input - 1][3] == 'v':
+        print('That place is already visited')
+    else:
+        print(places_list[user_input - 1][0], " in ", places_list[user_input - 1][1], " visited")
+        places_list[user_input - 1][3] = 'v'
 
 
 #def save_places():
