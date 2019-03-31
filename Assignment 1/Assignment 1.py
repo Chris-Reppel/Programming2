@@ -12,6 +12,7 @@ Q - Quit"""
 
 import csv
 
+
 def main():
     print("Travel Tracker 1.0 - by Chris Reppel")
     places_list = load_places()
@@ -35,41 +36,47 @@ def main():
 
 
 def load_places():
+    places_list = []
+    for place in open('places.csv', 'r'):
+        place = place.rstrip('\n').split(",")
+        places_list.append(place)
+    for place in places_list:
+        place[2] = int(place[2])
+    print('{} places loaded from places.csv'.format(len(places_list)))
+    return places_list
+
+
+#def list_places():
 
 
 
 
-def list_places():
+#def add_new_place():
 
 
 
 
-def add_new_place():
+#def record_input():
 
 
 
 
-def record_input():
+#def verify_input():
 
 
 
 
-def verify_input():
+#def check_unvisited():
 
 
 
 
-def check_unvisited():
+#def visited_place():
 
 
 
 
-def visited_place():
-
-
-
-
-def save_places():
+#def save_places():
 
 
 
