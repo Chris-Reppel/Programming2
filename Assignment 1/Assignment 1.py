@@ -46,9 +46,29 @@ def load_places():
     return places_list
 
 
-#def list_places():
+def list_places(places_list):
+    unvisited_place = 0
+    longest_place = 0
+    longest_country = 0
+    place_index = 1
 
-
+    for place in places_list:
+        if len(place[0]) > longest_place:
+            longest_place = len(place[0])
+        if place[3] == 'n':
+            unvisited_place += 1
+        if len(place[1]) > longest_country:
+            longest_country = len(place[1])
+    for place in places_list:
+        print(("*" if (place[3] is 'n') else " "), " {}.".format(place_index),
+              place[0], " " * (longest_place - len(place[0])), place[1],
+              " " * (longest_country + 1 - len(place[1])), "priority", " " * (3 - len(str(place[2]))), place[2])
+        place_index += 1
+    print(place_index - 1, " places.")
+    if unvisited_place == 0:
+        print("No unvisited places")
+    else:
+        print("You still want to visit", unvisited_place, "places.")
 
 
 #def add_new_place():
