@@ -117,9 +117,15 @@ def verify_input(user_input, data_type):
             return False
 
 
-#def check_unvisited():
-
-
+def check_unvisited(places_list):
+    unvisited = 0
+    for place in places_list:
+        if place[3] == 'n':
+            unvisited += 1
+            visisted_place(places_list)
+            break
+    if unvisited == 0:
+        print("No unvisited places")
 
 
 #def visited_place():
