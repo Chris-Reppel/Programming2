@@ -140,9 +140,15 @@ def visited_place(places_list):
         places_list[user_input - 1][3] = 'v'
 
 
-#def save_places():
-
-
+def save_places(places_list):
+    for place in places_list:
+        place[2] = str(place[2])
+    output_file = open('places.csv', 'w')
+    for place in places_list:
+        print(','.join(place), file=output_file)
+    output_file.close()
+    print(len(places_list), " places saved to places.csv")
+    print("Have a nice day :)")
 
 
 main()
