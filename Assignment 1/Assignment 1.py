@@ -7,7 +7,6 @@ URL: https://github.com/CP1404-2019-1/assignment1-Mystyking
 
 import csv
 
-
 MENU = """Menu:
 L - List places
 A - Add new place
